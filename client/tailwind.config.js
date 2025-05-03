@@ -1,24 +1,81 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-      "./index.html",
-      "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    darkMode: 'class',
-    theme: {
-      extend: {
-        animation: {
-          // Provides type hints for custom animations
-          'gradient-rotate': 'gradient-rotate 20s linear infinite',
-          'float-in': 'float-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
-          'fade-in': 'fade-in 0.8s ease-out forwards'
-        }
-      }
+  darkMode: ["class"],
+  // Correct content paths for Vite + React + TS
+  content: [
+    "./index.html",             // Include the main HTML file
+    "./src/**/*.{js,ts,jsx,tsx}", // Scan all relevant files in src
+  ],
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
     },
-    plugins: [
-      require('tailwindcss-radix')({
-        variantPrefix: 'radix',
-      }),
-      require('tailwindcss-animate')
-    ]
-  }
+    extend: {
+      
+      // colors: {
+      //   border: "hsl(var(--border))",
+      //   input: "hsl(var(--input))",
+      //   ring: "hsl(var(--ring))",
+      //   background: "hsl(var(--background))",
+      //   foreground: "hsl(var(--foreground))",
+      //   text: {
+      //     DEFAULT: "hsl(var(--primary))",
+      //     foreground: "hsl(var(--primary-foreground))",
+      //   },
+      //   primary: {
+      //     DEFAULT: "hsl(var(--primary))",
+      //     foreground: "hsl(var(--primary-foreground))",
+      //   },
+      //   secondary: {
+      //     DEFAULT: "hsl(var(--secondary))",
+      //     foreground: "hsl(var(--secondary-foreground))",
+      //   },
+      //   destructive: {
+      //     DEFAULT: "hsl(var(--destructive))",
+      //     foreground: "hsl(var(--destructive-foreground))",
+      //   },
+      //   muted: {
+      //     DEFAULT: "hsl(var(--muted))",
+      //     foreground: "hsl(var(--muted-foreground))",
+      //   },
+      //   accent: {
+      //     DEFAULT: "hsl(var(--accent))",
+      //     foreground: "hsl(var(--accent-foreground))",
+      //   },
+      //   popover: {
+      //     DEFAULT: "hsl(var(--popover))",
+      //     foreground: "hsl(var(--popover-foreground))",
+      //   },
+      //   card: {
+      //     DEFAULT: "hsl(var(--card))",
+      //     foreground: "hsl(var(--card-foreground))",
+      //   },
+      // },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      // Your keyframes and animations look fine
+      keyframes: {
+        "accordion-down": { /* ... */ },
+        "accordion-up": { /* ... */ },
+        blob: { /* ... */ },
+        float: { /* ... */ },
+        "gradient-x": { /* ... */ },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        blob: "blob 7s infinite",
+        float: "float 6s ease-in-out infinite",
+        "gradient-x": "gradient-x 15s ease infinite",
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")], // Ensure this is installed
+}

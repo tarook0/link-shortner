@@ -35,14 +35,19 @@ export async function createUrl(originalUrl: string, customCode?: string): Promi
   }
 }
 
-export async function findUrlByShortCode(shortCode: string): Promise<UrlRecord | null> {
+export async function findAndIncrementClicks(shortCode: string): Promise<UrlRecord | null> {
   const result = await pool.query(
-    `SELECT id, original_url as "originalUrl", short_code as "shortCode", created_at as "createdAt", clicks 
-     FROM urls 
-     WHERE short_code = $1`,
+    `UPDATE urls 
+     SET clicks = clicks + 1 
+     WHERE short_code = $1 
+     RETURNING 
+       id, 
+       original_url AS "originalUrl", 
+       short_code AS "shortCode", 
+       created_at AS "createdAt", 
+       clicks`,
     [shortCode]
   );
-  
   return result.rows[0] || null;
 }
 
