@@ -7,6 +7,6 @@ export const urlRouter:Router = Router();
 if (typeof createShortUrl !== 'function') {
     throw new Error('createShortUrl is not a function!');
   }
-  // @ts-ignore - Suppressing TS2769 / Temporary workaround
+
 urlRouter.post('/', createShortUrl);
 urlRouter.get('/', getUrls);
