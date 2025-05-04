@@ -1,30 +1,38 @@
-import { useState } from "react"
-import { useGetUrlList } from "@/lib/api"
-import { getFullShortUrl } from "@/lib/utils"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Button } from "@/components/ui/button"
-import { useToast } from "@/components/ui/use-toast"
-import { motion, AnimatePresence } from "framer-motion"
-import { Copy, Check, ExternalLink, BarChart2, LinkIcon } from "lucide-react"
+import { useState } from "react";
+import { useGetUrlList } from "@/lib/api";
+import { getFullShortUrl } from "@/lib/utils";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { motion, AnimatePresence } from "framer-motion";
+import { Copy, Check, ExternalLink, BarChart2, LinkIcon } from "lucide-react";
 
 export function UrlList() {
-  const { data, isLoading, isError } = useGetUrlList()
-  const { toast } = useToast()
-  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const { data, isLoading, isError } = useGetUrlList();
+  const { toast } = useToast();
+  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   const handleCopy = (text: string, id: string) => {
-    navigator.clipboard.writeText(text)
-    setCopiedId(id)
+    navigator.clipboard.writeText(text);
+    setCopiedId(id);
 
     toast({
       title: "Copied to clipboard!",
       description: "The shortened URL has been copied to your clipboard.",
-      className: "bg-gradient-to-r from-blue-500 to-purple-500 text-white border-none",
-    })
+      className:
+        "bg-gradient-to-r from-blue-500 to-purple-500 text-white border-none",
+    });
 
-    setTimeout(() => setCopiedId(null), 2000)
-  }
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   if (isLoading) {
     return (
@@ -40,7 +48,10 @@ export function UrlList() {
 
         <div className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="rounded-lg overflow-hidden border border-border/50">
+            <div
+              key={i}
+              className="rounded-lg overflow-hidden border border-border/50"
+            >
               <div className="p-4 space-y-2">
                 <Skeleton className="h-6 w-full" />
                 <div className="flex justify-between">
@@ -52,21 +63,36 @@ export function UrlList() {
           ))}
         </div>
       </div>
-    )
+    );
   }
 
   if (isError) {
     return (
       <div className="p-6 text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 dark:bg-red-900/20 mb-4">
-          <svg className="w-8 h-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            className="w-8 h-8 text-red-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </div>
-        <h3 className="text-xl font-medium text-foreground mb-2">Failed to load URLs</h3>
-        <p className="text-muted-foreground">There was an error loading your shortened URLs. Please try again later.</p>
+        <h3 className="text-xl font-medium text-foreground mb-2">
+          Failed to load URLs
+        </h3>
+        <p className="text-muted-foreground">
+          There was an error loading your shortened URLs. Please try again
+          later.
+        </p>
       </div>
-    )
+    );
   }
 
   if (!data?.urls?.length) {
@@ -75,10 +101,14 @@ export function UrlList() {
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/20 mb-4">
           <LinkIcon className="w-8 h-8 text-blue-500" />
         </div>
-        <h3 className="text-xl font-medium text-foreground mb-2">No links yet</h3>
-        <p className="text-muted-foreground mb-6">Shorten your first URL above to get started!</p>
+        <h3 className="text-xl font-medium text-foreground mb-2">
+          No links yet
+        </h3>
+        <p className="text-muted-foreground mb-6">
+          Shorten your first URL above to get started!
+        </p>
       </div>
-    )
+    );
   }
 
   return (
@@ -139,7 +169,12 @@ export function UrlList() {
                     </div>
                   </TableCell>
                   <TableCell className="text-center">
-                    <div className="inline-flex items-center justify-center min-w-[40px] h-6 bg-blue-100 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 text-xs font-medium rounded-full px-2">
+                    {/*
+                     * bg-[hsl(var(--secondary))]: Sets background using the --secondary variable (auto light/dark).
+                     * text-[hsl(var(--secondary-foreground))]: Sets text using the --secondary-foreground variable (auto light/dark).
+                     * We need hsl() because the variables store the HSL components, not a ready-to-use color value.
+                     */}
+                    <div className="inline-flex items-center justify-center min-w-[40px] h-6 bg-[hsl(var(--secondary))] text-[hsl(var(--float-color-2))] text-xs font-medium rounded-full px-2">
                       {url.clicks}
                     </div>
                   </TableCell>
@@ -154,7 +189,9 @@ export function UrlList() {
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={() => handleCopy(getFullShortUrl(url.shortCode), url.id)}
+                      onClick={() =>
+                        handleCopy(getFullShortUrl(url.shortCode), url.id)
+                      }
                       className="relative w-9 h-9 p-0 rounded-full"
                     >
                       <AnimatePresence mode="wait">
@@ -191,5 +228,5 @@ export function UrlList() {
         </Table>
       </div>
     </div>
-  )
+  );
 }
