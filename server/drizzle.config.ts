@@ -5,7 +5,7 @@ import * as dotenv from "dotenv";
 // Load .env file from the root relative to this config file
 // Adjust the path '../../.env' if your .env is elsewhere.
 // Consider using an environment variable for the path if needed in different environments.
-dotenv.config({ path: process.env.ENV_FILE_PATH || "../../.env" });
+dotenv.config({ path: process.env.ENV_FILE_PATH || ".env" });
 
 // --- Connection String Logic ---
 let connectionString: string | undefined;

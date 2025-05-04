@@ -4,22 +4,18 @@ import { UrlList } from "./components/UrlList"; // Ensure path is correct
 
 export default function Home() {
   return (
-    // Apply theme background and ensure min height
     <div className="min-h-screen relative bg-gradient-to-br from-[hsl(var(--page-bg-gradient-start))] to-[hsl(var(--page-bg-gradient-end))] overflow-hidden opacity-95">
-
-    {/* Animated background elements: Use theme-aware blob color variables */}
-    <div className="absolute inset-0 -z-10">
-      {/* Removed dark: prefixes for blob background colors */}
-      {/* Applied opacity directly as a separate Tailwind class */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-[hsl(var(--blob-color-1))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-[hsl(var(--blob-color-2))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[hsl(var(--blob-color-3))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-      <div className="absolute -bottom-8 right-20 w-72 h-72 bg-[hsl(var(--blob-color-4))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
-    </div>
-
+      {/* Animated background elements: Use theme-aware blob color variables */}
+      <div className="absolute inset-0 -z-10">
+        {/* Removed dark: prefixes for blob background colors */}
+        {/* Applied opacity directly as a separate Tailwind class */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-[hsl(var(--blob-color-1))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-[hsl(var(--blob-color-2))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[hsl(var(--blob-color-3))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute -bottom-8 right-20 w-72 h-72 bg-[hsl(var(--blob-color-4))] rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-6000"></div>
+      </div>
       {/* Grid overlay (uses dark: prefix, which is correct) */}
       <div className="absolute inset-0 -z-5 bg-grid-pattern opacity-95 dark:opacity-95"></div>
-
       {/* Main container */}
       <div className="container mx-auto px-4 py-12 relative">
         <header className="flex justify-between items-center mb-16">
@@ -79,12 +75,12 @@ export default function Home() {
           </div>
         </main>
 
-        {/* Floating elements (use dark: prefix, which is correct) */}
-        <div className="absolute top-1/4 left-10 w-6 h-6 rounded-full bg-purple-500/30 dark:bg-purple-500/50 animate-float"></div>
-        <div className="absolute top-1/3 right-10 w-4 h-4 rounded-full bg-blue-500/30 dark:bg-blue-500/50 animate-float animation-delay-2000"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-8 h-8 rounded-full bg-pink-500/30 dark:bg-pink-500/50 animate-float animation-delay-4000"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-5 h-5 rounded-full bg-yellow-500/30 dark:bg-yellow-500/50 animate-float animation-delay-6000"></div>
-      </div>
+        {/* Floating elements for decoration - Refactored */}
+        <div className="absolute top-1/4 left-10 w-6 h-6 rounded-full bg-[hsl(var(--float-color-1))] opacity-30 dark:opacity-50 animate-float"></div>
+        <div className="absolute top-1/3 right-10 w-4 h-4 rounded-full bg-[hsl(var(--float-color-2))] opacity-30 dark:opacity-50 animate-float animation-delay-2000"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-8 h-8 rounded-full bg-[hsl(var(--float-color-3))] opacity-30 dark:opacity-50 animate-float animation-delay-4000"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-5 h-5 rounded-full bg-[hsl(var(--float-color-4))] opacity-30 dark:opacity-50 animate-float animation-delay-6000"></div>
+      </div>{" "}
     </div>
   );
 }

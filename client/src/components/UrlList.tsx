@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { useGetUrlList } from "@/lib/api"
 import { getFullShortUrl } from "@/lib/utils"

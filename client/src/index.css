@@ -36,6 +36,12 @@
      --blob-color-2: 50 90% 80%;  /* Light Yellow */
      --blob-color-3: 330 90% 85%; /* Light Pink */
      --blob-color-4: 210 90% 80%; /* Light Blue */
+       /* --- NEW: Variables for floating elements (Light/Base Theme) --- */
+    /* Approximating HSL values for Tailwind's 500 level colors */
+    --float-color-1: 260 85% 65%;   /* ~purple-500 */
+    --float-color-2: 221 83% 53%;   /* ~blue-500 */
+    --float-color-3: 330 80% 60%;   /* ~pink-500 */
+    --float-color-4: 45 93% 55%;    /* ~yellow-500 */
   }
 
   .dark {
@@ -69,6 +75,12 @@
     --blob-color-2: 50 40% 20%;  /* Dark Yellow */
     --blob-color-3: 330 50% 30%; /* Dark Pink */
     --blob-color-4: 210 50% 25%; /* Dark Blue */
+    /* --- Optional: Define different base colors for dark floats --- */
+     /*If you want the *base color* to change in dark mode, uncomment & adjust */
+     --float-color-1: 260 70% 50%;    /*Darker Purple */
+     --float-color-2: 217 70% 50%;    /*Darker Blue */
+     --float-color-3: 330 70% 45%;    /*Darker Pink */
+     --float-color-4: 45 70% 40%;     /*Darker Yellow */
   } 
 }
 

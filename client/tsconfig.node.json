@@ -8,8 +8,8 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "noEmit": false,  // This is the critical fix
-    "outDir": "./dist",  // Add output directory
+    "noEmit": false,  
+    "outDir": "./dist", 
     "rootDir": ".",
     "types": ["node"],
     /* Bundler mode */

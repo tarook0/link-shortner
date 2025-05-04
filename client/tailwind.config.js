@@ -1,10 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
-  // Correct content paths for Vite + React + TS
   content: [
-    "./index.html",             // Include the main HTML file
-    "./src/**/*.{js,ts,jsx,tsx}", // Scan all relevant files in src
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     container: {
@@ -60,14 +59,6 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      // Your keyframes and animations look fine
-      keyframes: {
-        "accordion-down": { /* ... */ },
-        "accordion-up": { /* ... */ },
-        blob: { /* ... */ },
-        float: { /* ... */ },
-        "gradient-x": { /* ... */ },
-      },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
@@ -77,5 +68,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")], // Ensure this is installed
+  plugins: [require("tailwindcss-animate")],
 }

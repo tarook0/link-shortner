@@ -5,12 +5,16 @@ import * as schema from "./schema"; // Import your schema
 import * as dotenv from "dotenv";
 
 // Load .env file from the root relative to this config file
-dotenv.config({ path: "../../.env" }); // Adjust path as needed
-
+dotenv.config({ path: ".env" }); // Adjust path as needed
+const DB_HOST=process.env.DB_HOST;
+const DB_PORT=process.env.DB_PORT;
+const DB_NAME=process.env.DB_NAME;
+const DB_USER=process.env.DB_USER;
+const DB_PASSWORD=Number(process.env.DB_PASSWORD);
 const connectionString =
   process.env.DATABASE_URL ||
-  `postgresql://${"taroo"}:${"1234"}@${"localhost"}:${5432}/${"link_shortener"}`;
-
+  `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
+console.log(connectionString);
 if (!connectionString || connectionString.includes("undefined")) {
   throw new Error("Database connection string could not be constructed.");
 }
