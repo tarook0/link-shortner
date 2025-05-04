@@ -7,12 +7,12 @@ export interface UrlItem {
   }
   
   export interface CreateUrlRequest {
-    url: string;
+    originalUrl: string;
     customCode?: string;
   }
   
   export interface CreateUrlResponse {
-    url: UrlItem;
+    originalUrl: UrlItem;
   }
   
   export interface UrlListResponse {

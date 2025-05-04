@@ -13,7 +13,7 @@ import { LinkIcon, Wand2Icon } from "lucide-react"
 import { motion } from "framer-motion"
 
 const formSchema = z.object({
-  url: z.string().url({ message: "Please enter a valid URL" }),
+  originalUrl: z.string().url({ message: "Please enter a valid URL" }),
   customCode: z.string().optional(),
 })
 
@@ -25,7 +25,7 @@ export function UrlShortenerForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      url: "",
+      originalUrl: "",
       customCode: "",
     },
   })
@@ -65,7 +65,7 @@ export function UrlShortenerForm() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
-            name="url"
+            name="originalUrl"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-base flex items-center gap-2">
