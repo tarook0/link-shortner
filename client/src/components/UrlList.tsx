@@ -69,7 +69,7 @@ export function UrlList() {
     )
   }
 
-  if (!data?.urls.length) {
+  if (!data?.urls?.length) {
     return (
       <div className="p-8 text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/20 mb-4">
